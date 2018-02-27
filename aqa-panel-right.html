@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="aqa-panel-right">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `aqa-panel-right`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class AqaPanelRight extends Polymer.Element {
+      static get is() { return 'aqa-panel-right'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'aqa-panel-right'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(AqaPanelRight.is, AqaPanelRight);
+  </script>
+</dom-module>
