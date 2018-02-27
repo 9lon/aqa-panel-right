@@ -1,13 +1,48 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="./bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="./bower_components/aqa-font/aqa-mitr-font.html">
 
 <dom-module id="aqa-panel-right">
   <template>
     <style>
-      :host {
+       :host {
         display: block;
+        font-family: MitrLight;
+        --app-drawer-width: var(--app-panel-right-width, 750px);
+        --app-drawer-content-container:{
+          background-color: #ECEFF1;
+        }
+      }
+
+      #drawer {
+        z-index: 2;
+        text-align: left;
+      }
+
+      app-toolbar {
+        height: 60px;
+        background-color: #62A7E9;
+        color: white;
+      }
+
+      .content{
+        height: 100%;
+        overflow: auto;
+        padding: 0.5rem;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    <app-drawer align="right" id="drawer">
+      <app-toolbar>
+        <div main-title>[[title]]</div>
+        <paper-icon-button icon="close" on-tap="closePanel"></paper-icon-button>
+      </app-toolbar>
+      <div class="content">
+        <slot></slot>
+      </div>
+    </app-drawer>
   </template>
 
   <script>
@@ -23,11 +58,20 @@
       static get is() { return 'aqa-panel-right'; }
       static get properties() {
         return {
-          prop1: {
+          title: {
             type: String,
             value: 'aqa-panel-right'
           }
         };
+      }
+      open() {
+        this.$.drawer.open()
+      }
+      toggle(){
+        this.$.drawer.toggle()
+      }
+      closePanel(){
+        this.$.drawer.close()
       }
     }
 

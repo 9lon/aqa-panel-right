@@ -22,7 +22,15 @@
       <h3>Basic aqa-panel-right demo</h3>
       <demo-snippet>
         <template>
-          <aqa-panel-right></aqa-panel-right>
+          <button onclick="test()">test</button>
+          <aqa-panel-right id="panel" title="หัวข้อ">
+            <h2>sss</h2>
+          </aqa-panel-right>
+          <script>
+            function test(){
+              document.getElementById('panel').open()
+            }
+          </script>
         </template>
       </demo-snippet>
     </div>
